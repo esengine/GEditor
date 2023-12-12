@@ -1,0 +1,36 @@
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                  x:Class="GEditor.Views.CreateProjectView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GEditor.Views"
+        mc:Ignorable="d"
+        Title="创建工程" ResizeMode="NoResize" MinWidth="300" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="工程名" VerticalAlignment="Center" MinWidth="80"></TextBlock>
+            <TextBox Grid.Column="1" Text="{Binding ProjectName}"></TextBox>
+        </Grid>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="工程路径" VerticalAlignment="Center" MinWidth="80"></TextBlock>
+            <TextBox Grid.Column="1" Text="{Binding SelectProjectPath}"></TextBox>
+            <Button Grid.Column="2" Command="{Binding BrowserProjectCommand}">浏览</Button>
+        </Grid>
+        <Button Grid.Row="2" Command="{Binding CreateProjectCommand}">创建</Button>
+    </Grid>
+</mah:MetroWindow>

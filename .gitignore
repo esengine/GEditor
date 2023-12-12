@@ -1,0 +1,61 @@
+# 忽略 Visual Studio 临时文件、生成文件和文件夹
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# 忽略 .NET Core / .NET 5+ 生成输出
+out/
+
+# 忽略 NuGet 包文件
+*.nupkg
+*.snupkg
+# 忽略 NuGet Symbols
+*.pdb
+
+# 忽略包文件夹（如果使用 NuGet 还原，这通常是不必要的）
+packages/
+
+# 忽略 VS Code 文件夹
+.vscode/
+
+# 忽略 Visual Studio 临时文件、用户特定文件和文件夹
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+*.cache
+*.vscache
+*.vs/
+*.idea/
+
+# 忽略项目文件夹中的所有 .suo 文件
+**/*.suo
+
+# 忽略 Known Folders Junction Points
+[Ll]ibrary/
+
+# 忽略生成的文件
+[Tt]humbs.db
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+
+# Rider 忽略文件
+.idea/
+
+# 忽略 macOS 垃圾桶文件
+.DS_Store
