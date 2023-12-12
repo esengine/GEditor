@@ -12,9 +12,23 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TreeView Grid.Row="1" ItemsSource="{Binding Nodes}">
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="创建...">
+                        <MenuItem Header="行为树文件" Command="{Binding CreateBehaviourCommand}"></MenuItem>
+                    </MenuItem>
+                </ContextMenu>
+            </TreeView.ContextMenu>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <TextBlock Text="{Binding Name}">
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="重命名" Command="{Binding RenameCommand}"></MenuItem>
+                                <MenuItem Header="删除" Command="{Binding DeleteCommand}"></MenuItem>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

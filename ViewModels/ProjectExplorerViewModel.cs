@@ -1,5 +1,8 @@
-﻿using GEditor.Datas;
+﻿using CommunityToolkit.Mvvm.Input;
+using GEditor.Datas;
 using GEditor.Events;
+using GEditor.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace GEditor.ViewModels
 {
@@ -17,11 +21,29 @@ namespace GEditor.ViewModels
 
         private FileSystemWatcher _fileWatcher;
 
+        public ICommand CreateBehaviourCommand { get; set; }
+
         public ProjectExplorerViewModel() 
         {
             Nodes = new ObservableCollection<ExplorerTreeNode>();
 
+            CreateBehaviourCommand = new RelayCommand(CreateBehaviourExecute);
+
             GProjectData.EventBus.Subscribe<OpenProjectEvent>(OnOpenProject);
+        }
+
+        private void CreateBehaviourExecute() {
+            var dialog = new InputDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                string fileName = dialog.FileName;
+                if (!string.IsNullOrWhiteSpace(fileName))
+                {
+                    string fullPath = Path.Combine(GProjectData.OpenProject.Path, fileName + ".behaviour");
+                    // 创建文件
+                    File.Create(fullPath);
+                }
+            }
         }
 
         private void OnOpenProject(OpenProjectEvent _) {
